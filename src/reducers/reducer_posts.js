@@ -1,10 +1,11 @@
 import _ from 'lodash';
+import {FETCH_POSTS} from "../actions/fetch_posts";
 
-export default function(state, action){
+export default function(state = {}, action){
     switch(action.type) {
         case FETCH_POSTS:
-            return _.mapKeys(state.payload, 'id');
+            return _.mapKeys(action.payload.data, 'id');
         default:
-            retutn state;
+            return state;
     }
 }
