@@ -14,25 +14,25 @@ class PostsNew extends Component{
     }
 
     renderField(field){
-
+        const {touched, error} = field.meta;
+        const className = `form-group ${touched && error? 'has-danger': ''}`;
         return(
-            <div className="form-group">
+            <div className={className}>
                 <label>{field.label}</label>
                 <input
                     className="form-control"
                     type="text"
                     {...field.input}
                 />
-                /*field has three states i.e. 'pristine', 'touched' and 'invalid' */
-                { field.meta.touched? field.meta.error : ''}
+                <div className="text-help">
+                    {/*field has three states i.e. 'pristine', 'touched' and 'invalid' */}
+                    { touched? error : ''}
+                </div>
             </div>
-
         );
-
     }
 
     render(){
-
         // Both ways are correct,
         // second one is shortcut and valid because variable name we are using and property name in this.props is same
         // const handleSubmit = this.props.handleSubmit;
@@ -64,7 +64,6 @@ class PostsNew extends Component{
 }
 
 function validate(values){
-    console.log('val',values.content);
     let errors = {};
 
     if (!values.title){
