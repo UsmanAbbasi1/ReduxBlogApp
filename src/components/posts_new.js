@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Field, reduxForm } from 'redux-form';
+import {Link} from "react-router-dom";
 
 class PostsNew extends Component{
 
@@ -40,25 +41,30 @@ class PostsNew extends Component{
         const {handleSubmit} = this.props;
 
         return(
-            <form onSubmit={handleSubmit(this.onSubmit)}>
-                <Field
-                    label="Title"
-                    name="title"
-                    /*Field component first run validate() and then call whatever is assigned to component prop*/
-                    component={this.renderField}
-                />
-                <Field
-                    label="Categories"
-                    name="categories"
-                    component={this.renderField}
-                />
-                <Field
-                    label="Content"
-                    name="content"
-                    component={this.renderField}
-                />
-                <button type="submit" className='btn btn-primary'>Submit</button>
-            </form>
+            <div>
+                <form onSubmit={handleSubmit(this.onSubmit)}>
+                    <Field
+                        label="Title"
+                        name="title"
+                        /*Field component first run validate() and then call whatever is assigned to component prop*/
+                        component={this.renderField}
+                    />
+                    <Field
+                        label="Categories"
+                        name="categories"
+                        component={this.renderField}
+                    />
+                    <Field
+                        label="Content"
+                        name="content"
+                        component={this.renderField}
+                    />
+                    <button type="submit" className='btn btn-primary'>Submit</button>
+                    <Link className="btn btn-danger" to="/">Cancel</Link>
+                </form>
+            </div>
+
+
         );
     }
 }
