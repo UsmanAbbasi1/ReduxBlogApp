@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux';
-import {fetchPosts} from '../actions/fetch_posts';
+import {fetchPosts} from '../actions/index';
 import _ from 'lodash';
 import {Link} from "react-router-dom";
 
@@ -13,9 +13,12 @@ class PostIndex extends Component{
         // so we are using lodash map() function which can handle objects
         return _.map(this.props.posts, post => {
             return (
-                <li className="list-group-item" key={post.id}>
-                    {post.title}
-                </li>
+                <Link to = {`/posts/${post.id}`}>
+                    <li className="list-group-item" key={post.id}>
+                        {post.title}
+                    </li>
+                </Link>
+
             )
         })
     }
