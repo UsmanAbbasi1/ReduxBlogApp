@@ -7,6 +7,7 @@ export default function(state = {}, action){
             // get "id" from every item in first param passed,
             // create new object(key: value) and make it the key for the new object
             // this way, we will get object containing "key:value" pairs where keys will be "ids" and value will be each item in action.payload.data
+            // Stephen Grider recommend to use object instead of array for the state. it is easier to CRUD object containg "key:value" pairs than list
             return _.mapKeys(action.payload.data, 'id');
         case FETCH_POST:
             //        Do this
