@@ -1,8 +1,12 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {fetchPost} from "../actions";
+import {fetchPost, deletePost} from "../actions";
 
 class PostShow extends Component{
+
+    onDeletePost(){
+        this.props.deletePost(this.props.match.params.id, () => this.props.history.push("/"));
+    }
 
     componentDidMount(){
         this.props.fetchPost(this.props.match.params.id)
@@ -21,6 +25,7 @@ class PostShow extends Component{
                 <h3>
                 {this.props.post.title}
                 </h3>
+                <button className="btn-danger" onClick={this.onDeletePost.bind(this)}>Delete Post</button>
             </div>
         )
     }
@@ -33,4 +38,4 @@ function mapStateToProps(state, ownProps){
     return {post: state.posts[ownProps.match.params.id]}
 }
 
-export default connect(mapStateToProps, {fetchPost})(PostShow);
+export default connect(mapStateToProps, {fetchPost, deletePost})(PostShow);
