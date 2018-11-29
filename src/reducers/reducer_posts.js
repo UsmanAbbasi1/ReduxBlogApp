@@ -4,6 +4,9 @@ import {FETCH_POSTS, FETCH_POST, DELETE_POST} from "../actions/index";
 export default function(state = {}, action){
     switch(action.type) {
         case FETCH_POSTS:
+            // get "id" from every item in first param passed,
+            // create new object(key: value) and make it the key for the new object
+            // this way, we will get object containing "key:value" pairs where keys will be "ids" and value will be each item in action.payload.data
             return _.mapKeys(action.payload.data, 'id');
         case FETCH_POST:
             //        Do this
