@@ -33,8 +33,7 @@ class PostShow extends Component{
 }
 
 function mapStateToProps(state, ownProps){
-    console.log('id:',ownProps.match.params.id)
-    console.log('abc',state.posts);
+    // ownProps contain props being passed to this component i.e. PostShow
     return {post: state.posts[ownProps.match.params.id]}
 }
 
